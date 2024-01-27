@@ -21,9 +21,7 @@ function EditProfile() {
     lastNameInputRef.current.value = storeObj.loginDetails.lastName;
     ageInputRef.current.value = storeObj.loginDetails.age;
     emailInputRef.current.value = storeObj.loginDetails.email;
-    setProfilePicPath(
-      `http://localhost:4567/${storeObj.loginDetails.profilePic}`
-    );
+    setProfilePicPath(`/${storeObj.loginDetails.profilePic}`);
   }, []);
 
   let sendUpdateDataToServerThruFD = async () => {
@@ -43,10 +41,7 @@ function EditProfile() {
       body: dataToSend,
     };
 
-    let JSONData = await fetch(
-      "http://localhost:4567/updateProfile",
-      reqOptions
-    );
+    let JSONData = await fetch("/updateProfile", reqOptions);
 
     let JSOData = await JSONData.json();
 
